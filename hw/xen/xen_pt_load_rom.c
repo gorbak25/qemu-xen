@@ -64,6 +64,10 @@ void *pci_assign_dev_load_option_rom(PCIDevice *dev,
     ptr = memory_region_get_ram_ptr(&dev->rom);
     memset(ptr, 0xff, st.st_size);
 
+    // This will trick qemu into mapping a dummy vbios into the guest
+    // This won't matter becouse as soon as the i935 driver will take over the device
+    // the vbios won't be needed
+    *size = st.st_size;
     if (!fread(ptr, 1, st.st_size, fp)) {
         error_report("pci-assign: Cannot read from host %s", rom_file);
         error_printf("Device option ROM contents are probably invalid "
@@ -74,7 +78,6 @@ void *pci_assign_dev_load_option_rom(PCIDevice *dev,
 
     pci_register_bar(dev, PCI_ROM_SLOT, 0, &dev->rom);
     dev->has_rom = true;
-    *size = st.st_size;
 close_rom:
     /* Write "0" to disable ROM */
     fseek(fp, 0, SEEK_SET);
