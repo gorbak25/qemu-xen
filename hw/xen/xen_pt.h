@@ -9,6 +9,9 @@ void xen_pt_log(const PCIDevice *d, const char *f, ...) GCC_FMT_ATTR(2, 3);
 
 #define XEN_PT_ERR(d, _f, _a...) xen_pt_log(d, "%s: Error: "_f, __func__, ##_a)
 
+#define XEN_PT_LOGGING_ENABLED
+#define XEN_PT_DEBUG_PCI_CONFIG_ACCESS
+
 #ifdef XEN_PT_LOGGING_ENABLED
 #  define XEN_PT_LOG(d, _f, _a...)  xen_pt_log(d, "%s: " _f, __func__, ##_a)
 #  define XEN_PT_WARN(d, _f, _a...) \

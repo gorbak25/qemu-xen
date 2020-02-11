@@ -17,7 +17,7 @@
 #include "migration/misc.h"
 #include "migration/global_state.h"
 
-//#define DEBUG_XEN
+#define DEBUG_XEN
 
 #ifdef DEBUG_XEN
 #define DPRINTF(fmt, ...) \

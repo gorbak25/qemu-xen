@@ -29,7 +29,7 @@
 #include <xen/hvm/ioreq.h>
 #include <xen/hvm/e820.h>
 
-//#define DEBUG_XEN_HVM
+#define DEBUG_XEN_HVM
 
 #ifdef DEBUG_XEN_HVM
 #define DPRINTF(fmt, ...) \

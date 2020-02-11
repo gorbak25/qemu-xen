@@ -14,6 +14,8 @@
 #define XEN_HOST_PCI_MAX_EXT_CAP \
     ((PCIE_CONFIG_SPACE_SIZE - PCI_CONFIG_SPACE_SIZE) / (PCI_CAP_SIZEOF + 4))
 
+#define XEN_HOST_PCI_DEVICE_DEBUG
+
 #ifdef XEN_HOST_PCI_DEVICE_DEBUG
 #  define XEN_HOST_PCI_LOG(f, a...) fprintf(stderr, "%s: " f, __func__, ##a)
 #else
